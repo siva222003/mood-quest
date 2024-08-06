@@ -10,7 +10,7 @@ import express, { Request, Express } from "express";
 const app = express();
 
 // Set the port number for the server
-const port = 3000;
+const port = 3000;  
 
 // Define a route for the root path ('/')
 app.get("/", (req, res) => {
