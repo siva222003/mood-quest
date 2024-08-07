@@ -1,9 +1,15 @@
-import express from "express";
+import dotenv from "dotenv";
+import path from "path";
+const envPath = path.resolve(__dirname, "../.env"); 
+dotenv.config({ path: envPath });
 
+import express, { Request } from "express";
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
+
+app.get("/", (req: Request, res) => {
+  console.log(req.authenticated)
   res.send("Hello, TypeScript Node Express!");
 });
 
