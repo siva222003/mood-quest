@@ -2,7 +2,7 @@ import CircleProgress from "@/components/questionnaire/CircularProgress";
 import Header from "@/components/questionnaire/Header";
 import ImageOptions from "@/components/questions/ImageOptions";
 import { Button } from "@/components/ui/button";
-import React from "react";
+
 
 const Questionnaire = () => {
   return (

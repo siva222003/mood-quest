@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Footer from "./components/home/Footer";
+// import Footer from "./components/home/Footer";
 import Home from "./pages/Home";
 import Recommendations from "./pages/Recommendations";
 import Questionnaire from "./pages/Questionnaire";

@@ -1,16 +1,15 @@
-import React, { useState } from "react";
 
 const Test = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const divs = ["Div 1", "Div 2", "Div 3"]; // Replace with actual content
+  // const [currentIndex, setCurrentIndex] = useState(0);
+  // const divs = ["Div 1", "Div 2", "Div 3"]; // Replace with actual content
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % divs.length);
-  };
+  // const handleNext = () => {
+  //   setCurrentIndex((prevIndex) => (prevIndex + 1) % divs.length);
+  // };
 
-  const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + divs.length) % divs.length);
-  };
+  // const handlePrevious = () => {
+  //   setCurrentIndex((prevIndex) => (prevIndex - 1 + divs.length) % divs.length);
+  // };
 
   return (
     <div className="relative w-full h-64 overflow-hidden">

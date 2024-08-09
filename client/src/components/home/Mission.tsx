@@ -1,4 +1,4 @@
-import React from "react";
+
 import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
 import { Button } from "../ui/button";
 
