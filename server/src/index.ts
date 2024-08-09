@@ -1,11 +1,36 @@
 import { env } from "./config/config";
 import { DbService } from "./config/db";
 import express from "express";
+import morgan from "morgan";
+import { errorHandler } from "./middleware/error.middleware";
+import { analyzeMood } from "./helpers/open-ai";
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
+
+app.use(express.json());
+
+app.use(morgan("dev"));
+
+app.use(errorHandler);
+
 app.get("/", (_, res) => {
   res.send("Hello, Mood Quest Backend is Working!");
+});
+
+app.post("/ai", async (req, res) => {
+
+  try {
+    await analyzeMood();
+
+    res.send({ data: "Success" });
+  } catch (error) {
+    res.status(500).send({ error: "An error occurred" });
+    console.error("Error analyzing mood:", error);
+    
+  }
+ 
 });
 
 const dbService = new DbService();
