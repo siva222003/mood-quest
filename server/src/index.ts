@@ -1,6 +1,6 @@
 import { env } from "./config/config";
 import { DbService } from "./config/db";
-import express from "express";
+import express, { Request } from "express";
 import morgan from "morgan";
 import { errorHandler } from "./middleware/error.middleware";
 import { analyzeMood } from "./helpers/open-ai";
@@ -15,7 +15,8 @@ app.use(morgan("dev"));
 
 app.use(errorHandler);
 
-app.get("/", (_, res) => {
+app.get("/", (req:Request, res) => {
+  // console.log(req.authenticated)
   res.send("Hello, Mood Quest Backend is Working!");
 });
 

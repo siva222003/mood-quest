@@ -7,7 +7,7 @@ const ImageOptions = () => {
         Were you able to follow my instructions?
       </h1>
 
-      <div className="flex gap-7 mt-8">
+      <div className="flex gap-7 mt-8 flex-wrap">
         {[1, 2, 3, 4, 5].map((i) => (
           <div key={i} className="bg-[#f7f7f4] cursor-pointer rounded-lg flex flex-col justify-center items-center px-10 py-5 gap-3">
             <img
