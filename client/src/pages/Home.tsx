@@ -23,6 +23,8 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { Link } from "react-router-dom";
+import Steps from "@/components/home/Steps";
+import Footer from "@/components/home/Footer";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -46,7 +48,9 @@ export default function Example() {
 
   return (
     <motion.div className="bg-white">
+      {/* NavBar */}
       <motion.header className="absolute inset-x-0 top-0 z-50">
+        {/* Desktop Navbar */}
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
@@ -85,6 +89,8 @@ export default function Example() {
             </a>
           </div>
         </nav>
+
+        {/* Mobile Navbar */}
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
           <div className="fixed inset-0 z-50" />
           <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
@@ -159,7 +165,7 @@ export default function Example() {
             className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
           />
         </div>
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-28">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
               Transform Your Mood, Transform Your Life
@@ -183,7 +189,7 @@ export default function Example() {
             </div>
           </div>
         </div>
-        <div
+        {/* <div
           aria-hidden="true"
           className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
         >
@@ -194,8 +200,14 @@ export default function Example() {
             }}
             className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
           />
-        </div>
+        </div> */}
       </motion.div>
+
+          <Steps />
+
+          <Footer />
+
+
     </motion.div>
   );
 }

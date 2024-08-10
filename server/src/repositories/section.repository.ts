@@ -11,8 +11,12 @@ export class SectionRepository {
     return this._db.sectionModel.findById(id);
   }
 
+  async getQuestionsBySectionId(id: string) {
+    return this._db.sectionModel.findById(id).populate("questions");
+  }
+
   async create(data: { name: string }) {
-    return  this._db.sectionModel.create(data);
+    return this._db.sectionModel.create(data);
   }
 
   async update(id: string, data: { name: string }) {

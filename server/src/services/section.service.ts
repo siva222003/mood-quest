@@ -22,6 +22,16 @@ export class SectionService {
     return section;
   }
 
+  async getQuestionsBySectionId(id: string) {
+    const section = await this._sectionRepo.getQuestionsBySectionId(id);
+
+    if (!section) {
+      throw ApiError.notFound("Section not found");
+    }
+
+    return section.questions;
+  }
+
   async create(data: { name: string }, questionnaireId: string) {
     const section = await this._sectionRepo.create(data);
 

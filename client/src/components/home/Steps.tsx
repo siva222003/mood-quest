@@ -2,15 +2,15 @@
 
 const Steps = () => {
   return (
-    <section className="bg-[#F5F5F5] rounded-2xl py-20 mx-20 flex flex-col justify-center items-center ">
+    <section className="bg-[#fbfbfb] rounded-2xl py-20 flex flex-col justify-center items-center ">
       <h1 className="text-gray-col text-4xl font-bold">How it works?</h1>
 
       {[1, 2, 3, 4].map((_, index) => (
-        <div className="bg-white text-[#647067] text-xs font-bold my-4 flex items-center px-3 py-5 rounded-3xl justify-between gap-10">
+        <div className="bg-white text-[#647067] text-xs font-bold my-4 flex items-center px-5 py-5 rounded-3xl justify-between gap-10">
           <p>0{index + 1}</p>
 
           <div className="flex gap-3">
-            <div className="bg-[#84CC16] h-12 w-12 rounded-2xl"></div>
+            <div className="bg-blue-500 h-12 w-12 rounded-2xl"></div>
 
             <div className="flex flex-col justify-center">
               <h1 className="text-gray-col text-lg font-bold">Create an account</h1>
@@ -33,6 +33,7 @@ const Steps = () => {
               fill="#313A34"
             />
           </svg>
+
         </div>
       ))}
     </section>
