@@ -1,3 +1,4 @@
+
 const Scale = () => {
   return (
     <div className="flex flex-col">
@@ -7,7 +8,7 @@ const Scale = () => {
         How satisfied are you with the feature?
       </h1>
 
-        <div className="flex gap-1 md:gap-7 mt-8">
+      <div className="flex gap-1 md:gap-7 mt-8">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
           <div
             key={i}
@@ -18,7 +19,7 @@ const Scale = () => {
         ))}
       </div>
       <div className="flex justify-between my-4">
-        <h3 className="text-sm font-semibold text-gray-600" >Low</h3>
+        <h3 className="text-sm font-semibold text-gray-600">Low</h3>
 
         <h3 className="text-sm font-semibold text-gray-600">High</h3>
       </div>

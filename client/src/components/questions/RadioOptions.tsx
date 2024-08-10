@@ -1,7 +1,7 @@
-
 const RadioOptions = () => {
   return (
-    <div className="flex flex-col">
+    <div
+     className="flex flex-col">
       <h2 className="text-[#7a7a7a] text-xl">Question 3</h2>
 
       <h1 className="text-[#313131] text-3xl font-semibold my-2">

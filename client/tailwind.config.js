@@ -20,13 +20,13 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        primary: ["Nunito" , "Poppins", "Karla", "Montserrat", "sans-serif"],
+        primary: ["Nunito", "Poppins", "Karla", "Montserrat", "sans-serif"],
       },
 
       backgroundImage: {},
 
       colors: {
-        "gray-col" : "#313A34",
+        "gray-col": "#313A34",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -91,7 +91,11 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), addVariablesForColors],
+  plugins: [
+    require("tailwindcss-animate"),
+    addVariablesForColors,
+    // require("@tailwindcss/aspect-ratio")
+  ],
 };
 
 function addVariablesForColors({ addBase, theme }) {
