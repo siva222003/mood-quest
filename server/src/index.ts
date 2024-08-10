@@ -5,6 +5,9 @@ import morgan from "morgan";
 import { errorHandler } from "./middleware/error.middleware";
 import { analyzeMood } from "./helpers/open-ai";
 
+import questionnaireRouter from "./routes/questionnaire.routes";
+import sectionRouter from "./routes/section.routes";
+
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -13,10 +16,15 @@ app.use(express.json());
 
 app.use(morgan("dev"));
 
+
+
+app.use("/api/questionnaire", questionnaireRouter);
+app.use("/api/section", sectionRouter);
+
+
 app.use(errorHandler);
 
 app.get("/", (req:Request, res) => {
-  // console.log(req.authenticated)
   res.send("Hello, Mood Quest Backend is Working!");
 });
 

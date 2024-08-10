@@ -1,3 +1,5 @@
+import { STATUS_CODES } from "../helpers/constants";
+
 export class ApiError extends Error {
   status: number;
 
@@ -6,13 +8,13 @@ export class ApiError extends Error {
     this.status = status;
   }
 
-  static badRequest = (msg: string) => new ApiError(400, msg);
+  static badRequest = (msg: string) => new ApiError(STATUS_CODES.BAD_REQUEST, msg);
 
-  static unauthorized = (msg: string) => new ApiError(401, msg);
+  static unauthorized = (msg: string) => new ApiError(STATUS_CODES.UNAUTHORIZED, msg);
 
-  static forbidden = (msg: string) => new ApiError(403, msg);
+  static forbidden = (msg: string) => new ApiError(STATUS_CODES.FORBIDDEN, msg);
 
-  static notFound = (msg: string) => new ApiError(404, msg);
+  static notFound = (msg: string) => new ApiError(STATUS_CODES.NOT_FOUND, msg);
 
-  static conflict = (msg: string) => new ApiError(409, msg);
+  static conflict = (msg: string) => new ApiError(STATUS_CODES.CONFLICT, msg);
 }

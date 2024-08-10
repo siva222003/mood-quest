@@ -5,7 +5,7 @@ export interface ISection extends Document {
   questions: Schema.Types.ObjectId[];
 }
 
-export const SectionSchema: Schema<ISection> = new Schema({
+export const SectionSchema = new Schema({
   name: { type: String, required: true },
   questions: [{ type: Schema.Types.ObjectId, ref: "Question" }],
 });
