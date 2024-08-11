@@ -28,6 +28,7 @@ export const getQuestionnaire = asyncHandler(async (req, res) => {
   res.json(new ApiResponse(STATUS_CODES.OK, "Successfully retrieved questionnaire", questionnaire));
 });
 
+
 export const createQuestionnaire = asyncHandler(async (req, res) => {
   const { title } = req.body;
 

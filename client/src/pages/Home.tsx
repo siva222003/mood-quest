@@ -25,6 +25,7 @@ import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { Link } from "react-router-dom";
 import Steps from "@/components/home/Steps";
 import Footer from "@/components/home/Footer";
+import Login from "@/components/auth/Login";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -39,6 +40,8 @@ const words = ` Discover the power of MoodQuest. Our personalized mood assessmen
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // const {setOpen} = useModal();
+
   const handleScrollDown = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -49,6 +52,7 @@ export default function Example() {
   return (
     <motion.div className="bg-white">
       {/* NavBar */}
+
       <motion.header className="absolute inset-x-0 top-0 z-50">
         {/* Desktop Navbar */}
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
@@ -84,9 +88,13 @@ export default function Example() {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
+            {/* <button className="text-sm font-semibold leading-6 text-gray-900">
+              Log in <span aria-hidden="true">&rarr;</span> */}
+              <Login />
+              
+              {/* <button onClick={() => setOpen(true)} >Test</button> */}
+
+            {/* </button> */}
           </div>
         </nav>
 
@@ -202,6 +210,8 @@ export default function Example() {
           />
         </div> */}
       </motion.div>
+
+      <Link to="/recommendations">Questionnaire</Link>
 
           <Steps />
 

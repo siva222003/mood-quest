@@ -6,9 +6,20 @@ export class QuestionnaireRepository {
   async getAll() {
     return this._db.questionnaireModel.find();
   }
-  async getById(id: string)  {
+  async getById(id: string) {
     return this._db.questionnaireModel.findById(id);
   }
+
+  async getQuestionsByQuestionnaireId(id: string) {
+    return this._db.questionnaireModel.findById(id).populate({
+      path: "sections",
+      populate: {
+        path: "questions",
+        model: "Question",
+      },
+    });
+  }
+
   async create(data: { title: string }) {
     return this._db.questionnaireModel.create(data);
   }

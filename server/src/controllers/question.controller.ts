@@ -1,9 +1,26 @@
-import { questionService, sectionService } from "../config/injection";
+import { questionnaireService, questionService, sectionService } from "../config/injection";
 import { STATUS_CODES } from "../helpers/constants";
 import { validateQuestion } from "../helpers/validate";
 import { ApiError } from "../utils/api-error";
 import { ApiResponse } from "../utils/api-response";
 import { asyncHandler } from "../utils/async-handler";
+
+export const getQuestionsByQuestionnaireId = asyncHandler(async (req, res) => {
+  const { questionnaireId } = req.params;
+
+  if (!questionnaireId) {
+    throw ApiError.badRequest("Questionnaire ID is required");
+  }
+  const questionnaire = await questionnaireService.getQuestionsByQuestionnaireId(questionnaireId);
+
+  res.json(
+    new ApiResponse(
+      STATUS_CODES.OK,
+      "Successfully retrieved questions by questionnaire ID",
+      questionnaire
+    )
+  );
+});
 
 export const getQuestionsBySectionId = asyncHandler(async (req, res) => {
   if (!req.params.sectionId) {
@@ -42,7 +59,7 @@ export const deleteQuestion = asyncHandler(async (req, res) => {
     throw ApiError.badRequest("Question id is required");
   }
 
-  if(!req.body.sectionId) {
+  if (!req.body.sectionId) {
     throw ApiError.badRequest("Section id is required");
   }
 
