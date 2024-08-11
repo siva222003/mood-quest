@@ -9,6 +9,7 @@ import { analyzeMood } from "./helpers/open-ai";
 import questionnaireRouter from "./routes/questionnaire.routes";
 import sectionRouter from "./routes/section.routes";
 import questionRoutes from "./routes/question.routes";
+import recommendationRoutes from "./routes/recommendation.routes";
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(morgan("dev"));
 app.use("/api/questionnaire", questionnaireRouter);
 app.use("/api/section", sectionRouter);
 app.use("/api/question", questionRoutes);
+app.use("/api/recommendation", recommendationRoutes);
 
 app.use(errorHandler);
 
