@@ -7,7 +7,6 @@ import { useState } from "react";
 import { api } from "@/axios";
 import { useNavigate } from "react-router-dom";
 import MultiStepLoader from "../loaders/MultiStep";
-import useFetchQuestionnaire from "@/hooks/useFetchQuestionnaire";
 import { Progress } from "../ui/progress";
 
 interface QuestionListProps {
