@@ -8,53 +8,21 @@ import Chips from "../questions/Chips";
 interface QuestionProps {
   question: QuestionType;
   setAnswers: React.Dispatch<React.SetStateAction<AnswerType[]>>;
-  currentQuestionIndex: number;
-  currentSectionIndex: number;
+  currentCount: number;
 }
 
-const Question = ({
-  question,
-  setAnswers,
-  currentQuestionIndex,
-  currentSectionIndex,
-}: QuestionProps) => {
+const Question = ({ question, setAnswers, currentCount }: QuestionProps) => {
   const element = (question: QuestionType) => {
     switch (question.type) {
       case QuestionEnum.BOOLEAN:
-        return (
-          <Boolean
-            question={question}
-            setAnswers={setAnswers}
-            currentQuestionIndex={currentQuestionIndex}
-            currentSectionIndex={currentSectionIndex}
-          />
-        );
+        return <Boolean question={question} setAnswers={setAnswers} currentCount={currentCount+1} />;
       case QuestionEnum.SCALE:
-        return (
-          <Scale
-            question={question}
-            setAnswers={setAnswers}
-            currentQuestionIndex={currentQuestionIndex}
-            currentSectionIndex={currentSectionIndex}
-          />
-        );
+        return <Scale question={question} setAnswers={setAnswers} currentCount={currentCount+1} />;
       case QuestionEnum.CHIPS:
-        return (
-          <Chips
-            question={question}
-            setAnswers={setAnswers}
-            currentQuestionIndex={currentQuestionIndex}
-            currentSectionIndex={currentSectionIndex}
-          />
-        );
+        return <Chips question={question} setAnswers={setAnswers} currentCount={currentCount+1} />;
       case QuestionEnum.MULTIPLE_CHOICE:
         return (
-          <RadioOptions
-            question={question}
-            setAnswers={setAnswers}
-            currentQuestionIndex={currentQuestionIndex}
-            currentSectionIndex={currentSectionIndex}
-          />
+          <RadioOptions question={question} setAnswers={setAnswers} currentCount={currentCount+1} />
         );
       case QuestionEnum.MULTIPLE_CHOICE_IMG:
         return <ImageOptions />;

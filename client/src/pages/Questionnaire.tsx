@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Questionnaire = () => {
-  const { loading, questions, fetchQuestions ,totalQuestions} = useFetchQuestionnaire();
+  const { loading, questions, fetchQuestions, totalQuestions } = useFetchQuestionnaire();
 
   useEffect(() => {
     fetchQuestions();
@@ -26,18 +26,17 @@ const Questionnaire = () => {
   return (
     <>
       <section className="flex flex-col min-h-screen h-screen">
-      
         <div className="bg-[#f9fafc] flex flex-col flex-1">
           {/* <Header /> */}
 
-          <Link to="/" className="p-3 shadow-md rounded-lg">
+          <Link to="/" className="p-3 pl-10 shadow-md rounded-lg">
             {/* <img
             alt="Your Company"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
             className="h-8 w-auto"
           /> */}
 
-            <h2>MoodQuest</h2>
+            <h1 className="text-3xl font-bold">Mood Quest</h1>
           </Link>
 
           <QuestionList data={questions} totalQuestions={totalQuestions} />

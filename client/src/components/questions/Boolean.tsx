@@ -5,11 +5,10 @@ import { useState } from "react";
 interface BooleanProps {
   question: QuestionType;
   setAnswers: React.Dispatch<React.SetStateAction<AnswerType[]>>;
-  currentQuestionIndex: number;
-  currentSectionIndex: number;
+  currentCount: number;
 }
 
-const Boolean = ({ question, setAnswers,currentQuestionIndex,currentSectionIndex }: BooleanProps) => {
+const Boolean = ({ question, setAnswers, currentCount }: BooleanProps) => {
   const [selected, setSelected] = useState<"true" | "false" | null>(null);
 
   const handleSelect = (option: "true" | "false") => {
@@ -22,7 +21,7 @@ const Boolean = ({ question, setAnswers,currentQuestionIndex,currentSectionIndex
 
   return (
     <div className="flex flex-col mx-4">
-      <h2 className="text-[#7a7a7a] text-xl">Question {currentQuestionIndex+currentSectionIndex+1}</h2>
+      <h2 className="text-[#7a7a7a] text-xl">Question {currentCount}</h2>
 
       <h1 className="text-[#313131] text-2xl lg:text-3xl font-semibold my-2">
         {question.questionText}

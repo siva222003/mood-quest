@@ -5,12 +5,10 @@ import { useState } from "react";
 interface RadioOptionsProps {
   question: QuestionType;
   setAnswers: React.Dispatch<React.SetStateAction<AnswerType[]>>;
-  currentQuestionIndex: number;
-    currentSectionIndex: number;
-
+  currentCount: number;
 }
 
-const RadioOptions = ({ question, setAnswers ,currentQuestionIndex,currentSectionIndex}: RadioOptionsProps) => {
+const RadioOptions = ({ question, setAnswers, currentCount }: RadioOptionsProps) => {
   const [selected, setSelected] = useState<number | null>(null);
 
   const handleSelect = (option: number) => {
@@ -26,9 +24,11 @@ const RadioOptions = ({ question, setAnswers ,currentQuestionIndex,currentSectio
 
   return (
     <div className="flex flex-col mx-3">
-      <h2 className="text-[#7a7a7a] text-xl">Question {currentQuestionIndex+currentSectionIndex+1}</h2>
+      <h2 className="text-[#7a7a7a] text-xl">Question {currentCount}</h2>
 
-      <h1 className="text-[#313131] text-2xl lg:text-3xl font-semibold my-2">{question.questionText}</h1>
+      <h1 className="text-[#313131] text-2xl lg:text-3xl font-semibold my-2">
+        {question.questionText}
+      </h1>
 
       <div className="mt-6 space-y-6 ">
         {question.options?.map((option, index) => (

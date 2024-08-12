@@ -5,11 +5,10 @@ import { useEffect, useState } from "react";
 interface RadioOptionsProps {
   question: QuestionType;
   setAnswers: React.Dispatch<React.SetStateAction<AnswerType[]>>;
-  currentQuestionIndex: number;
-    currentSectionIndex: number;
+  currentCount: number;
 }
 
-const Chips = ({ question, setAnswers,currentQuestionIndex,currentSectionIndex }: RadioOptionsProps) => {
+const Chips = ({ question, setAnswers,currentCount }: RadioOptionsProps) => {
   const [selected, setSelected] = useState<number[] | null>(null);
 
   const isSelected = (option: number) => {
@@ -49,7 +48,7 @@ const Chips = ({ question, setAnswers,currentQuestionIndex,currentSectionIndex }
 
   return (
     <div className="flex flex-col mx-4">
-      <h2 className="text-[#7a7a7a] text-xl">Question {currentQuestionIndex+currentSectionIndex+1}</h2>
+      <h2 className="text-[#7a7a7a] text-xl">Question {currentCount}</h2>
 
       <h1 className="text-[#313131] text-2xl lg:text-3xl font-semibold my-2">
         {question.questionText}

@@ -44,7 +44,7 @@ export interface AnswerType {
 export interface RecommendationType {
   title: string;
   description: string;
-  type: string;
+  type: "podcast" | "video" | "blog";
   url: string;
   thumbnailUrl: string;
   tags: string[];

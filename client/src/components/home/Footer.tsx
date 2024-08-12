@@ -4,11 +4,12 @@ const Footer = () => {
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
           <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
-            <img
+            {/* <img
               className="w-auto h-9"
               src="https://cdn.rareblocks.xyz/collection/celebration/images/logo.svg"
               alt=""
-            />
+            /> */}
+            <h1 className="text-3xl font-bold">Mood Quest</h1>
 
             <p className="text-base leading-relaxed text-gray-600 mt-7">
               Explore personalized recommendations tailored to your mood. From insightful blogs to

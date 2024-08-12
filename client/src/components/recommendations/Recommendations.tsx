@@ -48,7 +48,7 @@ const Recommendations = ({ data }: RecommendationsProps) => {
           <h2 className="text-4xl my-12 font-semibold">Podcasts</h2>
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {data?.map(
-              (product, index) => product.type === "video" && <Blog key={index} blog={product} />
+              (product, index) => product.type === "podcast" && <Blog key={index} blog={product} />
             )}
           </div>
         </div>

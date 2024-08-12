@@ -84,8 +84,7 @@ const QuestionList = ({ data, totalQuestions }: QuestionListProps) => {
             <Question
               question={currentQuestion!}
               setAnswers={setAnswers}
-              currentQuestionIndex={currentQuestionIndex}
-              currentSectionIndex={currentSectionIndex}
+              currentCount={currentCount}
             />
           </motion.div>
         </AnimatePresence>

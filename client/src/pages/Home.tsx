@@ -49,7 +49,7 @@ const Home = () => {
               </a>
             </div> */}
 
-            <h1>Mood Quest</h1>
+            <h1 className="text-3xl font-bold">Mood Quest</h1>
 
             {/* <Logo /> */}
 
@@ -177,7 +177,7 @@ const Home = () => {
                 <div className="flex items-center">
                   <p className="text-3xl font-medium text-gray-900 sm:text-4xl font-pj">2943</p>
                   <p className="ml-3 text-sm text-gray-900 font-pj">
-                    Cards
+                    Recommendations
                     <br />
                     Delivered
                   </p>
@@ -204,9 +204,9 @@ const Home = () => {
                 <div className="flex items-center">
                   <p className="text-3xl font-medium text-gray-900 sm:text-4xl font-pj">$1M+</p>
                   <p className="ml-3 text-sm text-gray-900 font-pj">
-                    Transaction
+                    Usres
                     <br />
-                    Completed
+                    Registered
                   </p>
                 </div>
               </div>
