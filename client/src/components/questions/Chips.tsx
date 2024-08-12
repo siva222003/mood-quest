@@ -1,4 +1,4 @@
-import { updateAnswers } from "@/helpers";
+import { updateAnswers, updateLocalStorage } from "@/helpers";
 import { AnswerType, QuestionType } from "@/types";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -8,7 +8,7 @@ interface RadioOptionsProps {
   currentCount: number;
 }
 
-const Chips = ({ question, setAnswers,currentCount }: RadioOptionsProps) => {
+const Chips = ({ question, setAnswers, currentCount }: RadioOptionsProps) => {
   const [selected, setSelected] = useState<number[] | null>(null);
 
   const isSelected = (option: number) => {
@@ -34,6 +34,12 @@ const Chips = ({ question, setAnswers,currentCount }: RadioOptionsProps) => {
   };
 
   useEffect(() => {
+    const curr = updateLocalStorage(question, selected);
+
+    if (curr !== null) {
+      setSelected(curr);
+    }
+
     if (selected === null) {
       return;
     }

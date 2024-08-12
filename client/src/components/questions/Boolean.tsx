@@ -1,7 +1,7 @@
-import { updateAnswers } from "@/helpers";
+import { updateAnswers, updateLocalStorage } from "@/helpers";
 import { AnswerType, QuestionType } from "@/types";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 interface BooleanProps {
   question: QuestionType;
   setAnswers: React.Dispatch<React.SetStateAction<AnswerType[]>>;
@@ -18,6 +18,13 @@ const Boolean = ({ question, setAnswers, currentCount }: BooleanProps) => {
       return updatedAnswers;
     });
   };
+
+  useEffect(() => {
+    const curr = updateLocalStorage(question, selected);
+    if (curr !== null) {
+      setSelected(curr);
+    }
+  }, [selected]);
 
   return (
     <div className="flex flex-col mx-4">

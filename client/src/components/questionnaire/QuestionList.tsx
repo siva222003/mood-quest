@@ -59,7 +59,6 @@ const QuestionList = ({ data, totalQuestions }: QuestionListProps) => {
     }
   };
 
-  console.log(currentCount, totalQuestions);
 
   const isLastQuestion =
     currentSectionIndex === data.sections.length - 1 &&

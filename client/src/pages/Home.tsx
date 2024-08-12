@@ -32,7 +32,20 @@ const Home = () => {
 
   return (
     <motion.div>
-      <header className="py-4 md:py-6">
+      <motion.header
+        initial={{
+          opacity: 0,
+          y: -80,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.6,
+        }}
+        className="py-4 max-md:shadow-md md:py-6"
+      >
         <div className="container px-4 mx-auto sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* <div className="flex-shrink-0">
@@ -133,7 +146,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Hero */}
 
@@ -151,7 +164,7 @@ const Home = () => {
         }}
         className="pb-12 sm:pb-16"
       >
-        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="px-4 mx-auto max-md:my-8 max-w-7xl sm:px-6 lg:px-8">
           <div className="grid max-w-lg grid-cols-1 mx-auto lg:max-w-full lg:items-center lg:grid-cols-2 gap-y-12 lg:gap-x-16">
             <div>
               <div className="text-center lg:text-left">
@@ -163,7 +176,7 @@ const Home = () => {
                   Receive personalized recommendations to enhance your well-being and find balance.
                 </p>
 
-                <div className="mt-4 sm:mt-8 sm:inset-y-0 sm:right-0 sm:flex sm:items-center sm:pr-2">
+                <div className="mt-4 max-lg:justify-center sm:mt-8 sm:inset-y-0 sm:right-0 sm:flex sm:items-center sm:pr-2">
                   <Link
                     to="/questionnaire"
                     className="inline-flex px-6 py-3 text-lg font-bold text-white transition-all duration-200 bg-gray-900 rounded-lg focus:outline-none focus:bg-gray-600 font-pj hover:bg-gray-600"
@@ -223,9 +236,9 @@ const Home = () => {
         </div>
       </motion.section>
 
-      <Features  />
+      <Features />
 
-       <div className="border mx-20" ></div>
+      <div className="border mx-10 md:mx-20"></div>
 
       <Steps />
       <Footer />

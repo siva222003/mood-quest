@@ -1,6 +1,6 @@
 const Steps = () => {
   return (
-    <section id="steps" className="bg-white sm:py-20 lg:pb-20 lg:pt-10">
+    <section id="steps" className="bg-white lg:pb-20  my-14">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
