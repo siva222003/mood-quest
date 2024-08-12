@@ -6,35 +6,23 @@ interface MultiStepLoaderProps {
 
 const loadingStates = [
   {
-    text: "Buying a condo",
+    text: "Analyzing your mood responses...",
   },
   {
-    text: "Travelling in a flight",
+    text: "Generating personalized recommendations...",
   },
   {
-    text: "Meeting Tyler Durden",
+    text: "Curating content just for you...",
   },
   {
-    text: "He makes soap",
-  },
-  {
-    text: "We goto a bar",
-  },
-  {
-    text: "Start a fight",
-  },
-  {
-    text: "We like it",
-  },
-  {
-    text: "Welcome to F**** C***",
+    text: "Finalizing your recommendations...",
   },
 ];
 
+
 export default function MultiStepLoader({ loading }: MultiStepLoaderProps) {
   return (
-    <div className="w-full h-screen flex items-center justify-center bg-blue-200">
-        {loading}
+    <div className="w-full text-lg h-screen flex items-center justify-center bg-blue-100">
       <Loader loadingStates={loadingStates} loading={loading} duration={2000} />
     </div>
   );

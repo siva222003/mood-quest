@@ -11,8 +11,8 @@ const Footer = () => {
             />
 
             <p className="text-base leading-relaxed text-gray-600 mt-7">
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
-              officia consequat duis enim velit mollit.
+              Explore personalized recommendations tailored to your mood. From insightful blogs to
+              engaging videos and podcasts, we help you find the content that resonates with you  !
             </p>
 
             <ul className="flex items-center space-x-3 mt-9">
@@ -197,7 +197,7 @@ const Footer = () => {
               Subscribe to newsletter
             </p>
 
-            <form action="#" method="POST" className="mt-6">
+            <div  className="mt-6">
               <div>
                 <label htmlFor="email" className="sr-only">
                   Email
@@ -212,12 +212,11 @@ const Footer = () => {
               </div>
 
               <button
-                type="submit"
                 className="inline-flex items-center justify-center px-6 py-4 mt-3 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-md hover:bg-blue-700 focus:bg-blue-700"
               >
                 Subscribe
               </button>
-            </form>
+            </div>
           </div>
         </div>
 

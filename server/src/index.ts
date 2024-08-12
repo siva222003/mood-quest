@@ -10,6 +10,7 @@ import questionnaireRouter from "./routes/questionnaire.routes";
 import sectionRouter from "./routes/section.routes";
 import questionRoutes from "./routes/question.routes";
 import recommendationRoutes from "./routes/recommendation.routes";
+import { ApiResponse } from "./utils/api-response";
 
 const app = express();
 
@@ -24,7 +25,7 @@ app.use(morgan("dev"));
 app.use("/api/questionnaire", questionnaireRouter);
 app.use("/api/section", sectionRouter);
 app.use("/api/question", questionRoutes);
-app.use("/api/recommendation", recommendationRoutes);
+app.use("/api/recommendations", recommendationRoutes);
 
 app.use(errorHandler);
 
@@ -32,11 +33,14 @@ app.get("/", (req: Request, res) => {
   res.send("Hello, Mood Quest Backend is Working!");
 });
 
-app.post("/ai", async (req, res) => {
+app.post("/api/ai", async (req, res) => {
   try {
-    await analyzeMood();
+    const answers = req.body.answers;
 
-    res.send({ data: "Success" });
+    const moods = await analyzeMood(answers);
+
+    res.json(new ApiResponse(200, "Moods analyzed successfully", moods));
+
   } catch (error) {
     res.status(500).send({ error: "An error occurred" });
     console.error("Error analyzing mood:", error);

@@ -3,24 +3,59 @@ import Scale from "../questions/Scale";
 import RadioOptions from "../questions/RadioOptions";
 import ImageOptions from "../questions/ImageOptions";
 import Boolean from "../questions/Boolean";
+import Chips from "../questions/Chips";
 
 interface QuestionProps {
   question: QuestionType;
   setAnswers: React.Dispatch<React.SetStateAction<AnswerType[]>>;
+  currentQuestionIndex: number;
+  currentSectionIndex: number;
 }
 
-const Question = ({ question, setAnswers }: QuestionProps) => {
-
+const Question = ({
+  question,
+  setAnswers,
+  currentQuestionIndex,
+  currentSectionIndex,
+}: QuestionProps) => {
   const element = (question: QuestionType) => {
     switch (question.type) {
       case QuestionEnum.BOOLEAN:
-        return <Boolean question={question} setAnswers={setAnswers} />;
+        return (
+          <Boolean
+            question={question}
+            setAnswers={setAnswers}
+            currentQuestionIndex={currentQuestionIndex}
+            currentSectionIndex={currentSectionIndex}
+          />
+        );
       case QuestionEnum.SCALE:
-        return <Scale question={question} setAnswers={setAnswers} />;
+        return (
+          <Scale
+            question={question}
+            setAnswers={setAnswers}
+            currentQuestionIndex={currentQuestionIndex}
+            currentSectionIndex={currentSectionIndex}
+          />
+        );
       case QuestionEnum.CHIPS:
-        return <div>Chips</div>;
+        return (
+          <Chips
+            question={question}
+            setAnswers={setAnswers}
+            currentQuestionIndex={currentQuestionIndex}
+            currentSectionIndex={currentSectionIndex}
+          />
+        );
       case QuestionEnum.MULTIPLE_CHOICE:
-        return <RadioOptions question={question} setAnswers={setAnswers} />;
+        return (
+          <RadioOptions
+            question={question}
+            setAnswers={setAnswers}
+            currentQuestionIndex={currentQuestionIndex}
+            currentSectionIndex={currentSectionIndex}
+          />
+        );
       case QuestionEnum.MULTIPLE_CHOICE_IMG:
         return <ImageOptions />;
       case QuestionEnum.OPEN_ENDED:

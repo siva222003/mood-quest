@@ -5,9 +5,11 @@ import { useState } from "react";
 interface ScaleProps {
   question: QuestionType;
   setAnswers: React.Dispatch<React.SetStateAction<AnswerType[]>>;
+  currentQuestionIndex: number;
+  currentSectionIndex: number;
 }
 
-const Scale = ({ question, setAnswers }: ScaleProps) => {
+const Scale = ({ question, setAnswers ,currentQuestionIndex,currentSectionIndex}: ScaleProps) => {
   const [selected, setSelected] = useState<number | null>(null);
 
   const handleSelect = (option: number) => {
@@ -20,13 +22,13 @@ const Scale = ({ question, setAnswers }: ScaleProps) => {
   };
 
   return (
-    <div className="flex flex-col">
-      <h2 className="text-[#7a7a7a] text-xl">Question 2</h2>
+    <div className="flex flex-col mx-3">
+      <h2 className="text-[#978484] text-xl">Question {currentQuestionIndex+currentSectionIndex+1}</h2>
 
-      <h1 className="text-[#313131] text-3xl font-semibold my-2">{question.questionText}</h1>
+      <h1 className="text-[#313131] text-2xl lg:text-3xl font-semibold my-2">{question.questionText}</h1>
 
       <div className="w-fit">
-        <div className="flex gap-1 md:gap-7 mt-8">
+        <div className="flex flex-wrap gap-3 md:gap-7 mt-8">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
             <motion.div
               whileHover={{ scale: 1.1 }}
@@ -41,7 +43,7 @@ const Scale = ({ question, setAnswers }: ScaleProps) => {
             </motion.div>
           ))}
         </div>
-        <div className="flex justify-between my-4">
+        <div className="flex justify-between my-4 max-md:hidden">
           <h3 className="text-sm font-semibold text-gray-600">Low</h3>
 
           <h3 className="text-sm font-semibold text-gray-600">High</h3>

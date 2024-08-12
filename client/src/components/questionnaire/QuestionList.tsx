@@ -3,8 +3,10 @@ import { AnswerType, QuestionnaireType } from "@/types/index";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "../ui/button";
 import Question from "./Question";
-// import { api } from "@/axios"; 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { api } from "@/axios";
+import { useNavigate } from "react-router-dom";
+import MultiStepLoader from "../loaders/MultiStep";
 
 interface QuestionListProps {
   data: QuestionnaireType;
@@ -20,6 +22,7 @@ const QuestionList = ({ data }: QuestionListProps) => {
     handlePrevious,
   } = useUpdatePage(data);
 
+  const navigate = useNavigate();
 
   const [answers, setAnswers] = useState<AnswerType[]>([
     {
@@ -28,29 +31,30 @@ const QuestionList = ({ data }: QuestionListProps) => {
     },
   ]);
 
-  useEffect(() => {
-    console.log(answers);
-  }, [answers]);
+  const [isPending, setIsPending] = useState(false);
 
   const handleSubmit = async () => {
-    // try {
-    //   const response = await api.post("/your-submit-endpoint", {
-    //     // Include the data you want to submit
-    //     answers: {}, // Replace with your actual answers data
-    //   });
-    //   console.log("Submission successful:", response.data);
-    //   // Handle successful submission (e.g., show a success message, navigate to another page)
-    // } catch (error) {
-    //   console.error("Submission failed:", error);
-    //   // Handle errors (e.g., show an error message)
-    // }
+    try {
+      setIsPending(true);
+      const response = await api.post("/ai", {
+        answers,
+      });
+      console.log("Submission successful:", response.data.data);
+      setIsPending(false);
 
-    console.log(answers);
+      navigate("/recommendations", { state: { moods: response.data.data } });
+    } catch (error) {
+      console.error("Submission failed:", error);
+    }
   };
 
   const isLastQuestion =
     currentSectionIndex === data.sections.length - 1 &&
     currentQuestionIndex === currentSection!.questions.length - 1;
+
+  if (isPending) {
+    return <MultiStepLoader loading={isPending} />;
+  }
 
   return (
     <div className="flex-1 flex flex-col items-center justify-around">
@@ -62,7 +66,12 @@ const QuestionList = ({ data }: QuestionListProps) => {
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center w-full"
         >
-          <Question question={currentQuestion!} setAnswers={setAnswers} />
+          <Question
+            question={currentQuestion!}
+            setAnswers={setAnswers}
+            currentQuestionIndex={currentQuestionIndex}
+            currentSectionIndex={currentSectionIndex}
+          />
         </motion.div>
       </AnimatePresence>
 

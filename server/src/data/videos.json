@@ -1,0 +1,98 @@
+[
+  {
+    "title": "The Science of Happiness | TED-Ed",
+    "description": "A TED-Ed video that explores what science says about happiness and how to achieve it.",
+    "type": "video",
+    "url": "https://www.ted.com/talks/dan_gilbert_the_surprising_science_of_happiness?geo=hi&subtitle=en",
+    "thumbnailUrl": "https://pi.tedcdn.com/r/pe.tedcdn.com/images/ted/016a827cc0757092a0439ab2a63feca8655b6c29_1600x1200.jpg?u%5Br%5D=2&u%5Bs%5D=0.5&u%5Ba%5D=0.8&u%5Bt%5D=0.03&quality=82w=640",
+    "tags": ["Happy", "Content", "Calm"]
+  },
+  {
+    "title": "How to Achieve a Calm Mind | Yoga with Adriene",
+    "description": "A calming yoga session designed to help you achieve a peaceful and relaxed state of mind.",
+    "type": "video",
+    "url": "https://www.youtube.com/watch?v=Enz98dDXQfY",
+    "thumbnailUrl": "https://i.ytimg.com/vi/Enz98dDXQfY/maxresdefault.jpg",
+    "tags": ["Calm", "Content", "Happy"]
+  },
+  {
+    "title": "Finding Happiness in Small Moments | TED Talk",
+    "description": "This TED Talk by Ingrid Fetell Lee explores how to find happiness in the small moments of everyday life.",
+    "type": "video",
+    "url": "https://www.youtube.com/watch?v=B3ddr939QxY",
+    "thumbnailUrl": "https://i.ytimg.com/vi/B3ddr939QxY/hqdefault_86000.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCy6TZBJ5Kff12TN9-eFlmAgxJRvw",
+    "tags": ["Happy", "Content", "Calm"]
+  },
+  {
+    "title": "Overcoming Anxiety | TEDx Talk",
+    "description": "A TEDx Talk by Jonny Benjamin about overcoming anxiety and finding inner peace.",
+    "type": "video",
+    "url": "https://www.ted.com/talks/olivia_remes_how_to_cope_with_anxiety?geo=hi&subtitle=en",
+    "thumbnailUrl": "https://i.ytimg.com/vi/WWloIAQpMcQ/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGGUgQyhAMA8=&rs=AOn4CLBYobBAiqWOFDI4y6gnMtJvv5QMcg",
+    "tags": ["Anxious", "Calm", "Content"]
+  },
+  {
+    "title": "How to Deal with Stress | CrashCourse",
+    "description": "An informative video by CrashCourse on effective techniques to manage stress.",
+    "type": "video",
+    "url": "https://www.youtube.com/watch?v=TBsHxfHXFS8",
+    "thumbnailUrl": "https://i.ytimg.com/vi/TBsHxfHXFS8/maxresdefault.jpg",
+    "tags": ["Stressed", "Calm", "Content"]
+  },
+  {
+    "title": "How to Stay Motivated | TED Talk",
+    "description": "A TED Talk by Mel Robbins on techniques to stay motivated and achieve your goals.",
+    "type": "video",
+    "url": "https://www.ted.com/talks/ted_ed_how_to_get_motivated_even_when_you_don_t_feel_like_it?geo=hi&subtitle=en",
+    "thumbnailUrl": "https://pi.tedcdn.com/r/talkstar-assets.s3.amazonaws.com/production/talks/talk_123149/27fd5899-e81e-49e3-a0fb-f34f0697d9fb/intrisicmotivation_textless.jpg?u%5Br%5D=2&u%5Bs%5D=0.5&u%5Ba%5D=0.8&u%5Bt%5D=0.03&quality=82w=640",
+    "tags": ["Motivated", "Happy", "Energized"]
+  },
+  {
+    "title": "Simple Ways to Be Happier | TED Talk",
+    "description": "This TED Talk by Dan Gilbert provides simple and practical ways to enhance happiness in your daily life.",
+    "type": "video",
+    "url": "https://www.youtube.com/watch?app=desktop&v=gYeHV_nA36c",
+    "thumbnailUrl": "https://i.ytimg.com/vi/gYeHV_nA36c/maxresdefault.jpg",
+    "tags": ["Happy", "Content", "Calm"]
+  },
+  {
+    "title": "The Power of Vulnerability | TED Talk",
+    "description": "In this TED Talk, Brené Brown discusses the power of vulnerability and how it can lead to deeper connections and a more fulfilling life.",
+    "type": "video",
+    "url": "https://www.ted.com/talks/brene_brown_the_power_of_vulnerability?geo=hi&subtitle=en",
+    "thumbnailUrl": "https://www.bspny.com/hubfs/BSP_Blog_TEDTuesday_BreneBrown.jpg",
+    "tags": ["Happy", "Content", "Calm"]
+  },
+  {
+    "title": "Meditation for a Happy Life | Mindfulness Meditation",
+    "description": "A guided meditation video to help you cultivate happiness and maintain a positive outlook.",
+    "type": "video",
+    "url": "https://www.youtube.com/watch?v=rJ56DPoGP38",
+    "thumbnailUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJOvSqu0hpElTdNGy5g5zjQ_Cjo-roA4Ld0g&s",
+    "tags": ["Happy", "Content", "Calm"]
+  },
+  {
+    "title": "Techniques for Reducing Stress | Mindfulness Video",
+    "description": "A video focused on mindfulness techniques to help reduce stress and promote relaxation.",
+    "type": "video",
+    "url": "https://www.youtube.com/watch?v=Ky0oB3INcM4",
+    "thumbnailUrl": "https://i.ytimg.com/vi/Ky0oB3INcM4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAUqoFbGc5b8Egt-PQsXkCub3wAWw",
+    "tags": ["Stressed", "Calm", "Content"]
+  },
+  {
+    "title": "The Art of Being Calm | Relaxation Techniques",
+    "description": "Learn relaxation techniques that help achieve a calm and relaxed state of mind.",
+    "type": "video",
+    "url": "https://www.youtube.com/watch?v=2KLwg0kG8Ps",
+    "thumbnailUrl": "https://i.ytimg.com/vi/2KLwg0kG8Ps/maxresdefault.jpg",
+    "tags": ["Calm", "Content", "Happy"]
+  },
+  {
+    "title": "Finding Joy in Everyday Moments | TED Talk",
+    "description": "This TED Talk explores how to find joy and contentment in everyday life.",
+    "type": "video",
+    "url": "https://www.ted.com/talks/ingrid_fetell_lee_where_joy_hides_and_how_to_find_it?geo=hi&subtitle=en",
+    "thumbnailUrl": "https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/e39fce18-6b1a-4e85-baec-e70d9541b653/IngridFetellLee_2018-embed.jpg?u%5Br%5D=2&u%5Bs%5D=0.5&u%5Ba%5D=0.8&u%5Bt%5D=0.03&quality=82w=640",
+    "tags": ["Happy", "Content", "Calm"]
+  }
+]

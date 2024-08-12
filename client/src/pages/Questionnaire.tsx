@@ -1,4 +1,4 @@
-import MultiStepLoader from "@/components/loaders/MultiStep";
+import QuestionnaireLoader from "@/components/loaders/QuestionnaireLoader";
 // import Header from "@/components/questionnaire/Header";
 import QuestionList from "@/components/questionnaire/QuestionList";
 
@@ -9,15 +9,14 @@ import { Link } from "react-router-dom";
 const Questionnaire = () => {
   const { loading, questions, fetchQuestions } = useFetchQuestionnaire();
 
-  // const [isPending, setIsPending] = useState(false);
-
   useEffect(() => {
     fetchQuestions();
+
+    localStorage.removeItem("selected");
   }, []);
 
   if (loading) {
-    // return <div>Loading...</div>;
-    return <MultiStepLoader loading={loading} />;
+    return <QuestionnaireLoader />;
   }
 
   if (!questions) {

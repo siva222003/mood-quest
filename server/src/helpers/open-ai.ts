@@ -1,36 +1,65 @@
 import { OpenAI } from "openai";
 
 const configuration = {
-    apiKey: process.env.OPENAI_API_KEY,
-//   apiKey: "sk-<your-openai-api-key>",
+  apiKey: process.env.OPENAI_API_KEY,
 };
 const openai = new OpenAI(configuration);
 
-const questionnaireData = {
-  questions: [
-    { question: "How do you feel today?", answer: "I am very anxious." },
-    { question: "Have you had a good day?", answer: "Not really, it's been stressful." },
-  ],
-};
-
-export async function analyzeMood() {
+export async function analyzeMood(answers: any) {
   try {
+    const formattedAnswers = answers
+      .map((answer: any) => `**Question:** ${answer.question}\n**Answer:** ${answer.answer}`)
+      .join("\n\n");
+
+    const temp = `You are provided with a set of questions and answers that reflect the user's current emotional state. Your task is to analyze the responses and determine which moods from the following array best match the user's state. Please select 2 or 3 of the most appropriate moods based on the given answers.
+
+**Mood Array:**
+[
+  "Happy",
+  "Anxious",
+  "Sad",
+  "Overwhelmed",
+  "Stressed",
+  "Content",
+  "Frustrated",
+  "Depressed",
+  "Calm",
+  "Motivated",
+  "Indifferent",
+  "Excited",
+  "Irritated",
+  "Energized",
+  "Confident",
+  "Disheartened",
+  "Optimistic",
+  "Exhausted",
+  "Satisfied",
+  "Nervous"
+]
+
+**User Responses:**
+${formattedAnswers}
+
+Based on these responses, please analyze the user's mood and return 2 or 3 of the best-matched moods from the array above and just give only the array of moods and not even a single character extra.
+`;
+
     const completion = await openai.chat.completions.create({
       messages: [
         {
           role: "system",
-          content: `Analyze the following responses and determine the mood of the user:\n\n${JSON.stringify(
-            questionnaireData
-          )}\n\nProvide an array of moods based on the responses.`,
+          content: temp,
         },
       ],
       model: "gpt-4o-mini",
     });
 
-    const analyzedMoods = completion.choices[0];
-    // return JSON.parse(analyzedMoods);
+    const analyzedMoods = completion.choices[0].message.content;
 
-    console.log(analyzedMoods);
+    const parsedMoods = JSON.parse(analyzedMoods ?? "[]");
+
+    console.log(parsedMoods);
+
+    return parsedMoods;
   } catch (error) {
     throw error;
   }

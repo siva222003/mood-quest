@@ -5,9 +5,11 @@ import { useState } from "react";
 interface BooleanProps {
   question: QuestionType;
   setAnswers: React.Dispatch<React.SetStateAction<AnswerType[]>>;
+  currentQuestionIndex: number;
+  currentSectionIndex: number;
 }
 
-const Boolean = ({ question, setAnswers }: BooleanProps) => {
+const Boolean = ({ question, setAnswers,currentQuestionIndex,currentSectionIndex }: BooleanProps) => {
   const [selected, setSelected] = useState<"true" | "false" | null>(null);
 
   const handleSelect = (option: "true" | "false") => {
@@ -19,10 +21,12 @@ const Boolean = ({ question, setAnswers }: BooleanProps) => {
   };
 
   return (
-    <div className="flex flex-col">
-      <h2 className="text-[#7a7a7a] text-xl">Question 1</h2>
+    <div className="flex flex-col mx-4">
+      <h2 className="text-[#7a7a7a] text-xl">Question {currentQuestionIndex+currentSectionIndex+1}</h2>
 
-      <h1 className="text-[#313131] text-3xl font-semibold my-2">{question.questionText}</h1>
+      <h1 className="text-[#313131] text-2xl lg:text-3xl font-semibold my-2">
+        {question.questionText}
+      </h1>
 
       <div className="flex gap-10 mt-8 justify-center">
         <motion.div
@@ -35,7 +39,7 @@ const Boolean = ({ question, setAnswers }: BooleanProps) => {
         >
           <img
             className="w-12 h-12"
-            src="https://cdn.iconscout.com/icon/free/png-512/free-angry-169-450433.png?f=webp&w=256"
+            src="https://cdn.iconscout.com/icon/free/png-512/free-emoji-55-216464.png?f=webp&w=256"
             alt=""
           />
 
@@ -52,7 +56,7 @@ const Boolean = ({ question, setAnswers }: BooleanProps) => {
         >
           <img
             className="w-12 h-12"
-            src="https://cdn.iconscout.com/icon/free/png-512/free-angry-169-450433.png?f=webp&w=256"
+            src="https://cdn.iconscout.com/icon/free/png-512/free-emoji-76-216485.png?f=webp&w=256"
             alt=""
           />
 

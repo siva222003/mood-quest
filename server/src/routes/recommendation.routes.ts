@@ -1,11 +1,14 @@
-import express  from 'express'
+import express from "express";
+import {
+  createManyRecommendations,
+  createRecommendation,
+  getRecommendations,
+} from "../controllers/recommendation.controller";
 
-const router = express.Router()
+const router = express.Router();
 
+router.post("/tags", getRecommendations);
+router.post("/", createRecommendation);
+router.post("/many", createManyRecommendations);
 
-router.get('/', (req, res) => {
-  res.send('Hello from recommendation route')
-})
-
-
-export default router
+export default router;

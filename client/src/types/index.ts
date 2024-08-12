@@ -40,3 +40,12 @@ export interface AnswerType {
   question: string;
   answer: string | number | string[];
 }
+
+export interface RecommendationType {
+  title: string;
+  description: string;
+  type: string;
+  url: string;
+  thumbnailUrl: string;
+  tags: string[];
+}

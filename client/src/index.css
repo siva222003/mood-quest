@@ -8,6 +8,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -74,3 +75,74 @@
   }
 }
 
+.loader {
+  display: inline-flex;
+  border: 2px solid #000;
+  --c:no-repeat linear-gradient(#000 0 0) 50%;
+  background:
+    var(--c) calc(50% - 5px)/5px 5px,
+    var(--c) calc(50% + 5px)/5px 5px;
+}
+.loader::before,
+.loader::after {
+  content: "12 00 23 40 31 45 60 17 45 32 29 42 50 08 14 07 46 11 03 55";
+  font-size: 100px;
+  font-family: monospace;
+  font-weight: bold;
+  line-height: 1em;
+  height: 1em;
+  width: 2ch;
+  color: #0000;
+  text-shadow: 0 0 0 #000;
+  overflow: hidden;
+  margin: 5px 10px; 
+  animation: l3 1s steps(20) infinite;
+}
+.loader::before {
+  animation-duration: 1.5s;
+}
+@keyframes l3 {
+  100% {text-shadow: 0 -20em 0 #000}
+}
+
+
+/* HTML: <div class="loader"></div> */
+.loader2 {
+  width: 150px;
+  aspect-ratio: 1;
+  background: #006cff;
+  border-radius: 50%;
+  animation: l1 3s infinite linear;
+}
+@keyframes l1{
+  12.5% {border-radius: 37% 63% 70% 30% / 30% 62% 38% 70%}
+  25%   {border-radius: 50% 50% 70% 30% / 52% 62% 38% 48%}
+  37.5% {border-radius: 33% 67% 18% 82% / 52% 75% 25% 48%}
+  50%   {border-radius: 73% 27% 18% 82% / 52% 32% 68% 48%}
+  62.5% {border-radius: 73% 27% 74% 26% / 64% 32% 68% 36%}
+  75%   {border-radius: 84% 16% 15% 85% / 55% 79% 21% 45%}
+  87.5% {border-radius: 12% 88% 69% 31% / 10% 66% 34% 90%}
+}
+
+/* HTML: <div class="loader"></div> */
+.loader3 {
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 30px;
+  background:linear-gradient(90deg,#000 50%,#0000 0) right/200% 100%;
+  animation: l21 2s infinite linear;
+}
+.loader3::before {
+  content :"Loading...";
+  color: #0000;
+  padding: 0 5px;
+  background: inherit;
+  background-image: linear-gradient(90deg,#fff 50%,#000 0);
+  -webkit-background-clip:text;
+          background-clip:text;
+}
+
+@keyframes l21{
+  100%{background-position: left}
+}
