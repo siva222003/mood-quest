@@ -1,13 +1,14 @@
 import { api } from "@/axios";
 import { QuestionnaireResponse, QuestionnaireType } from "@/types/index";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useFetchQuestionnaire = () => {
   const [loading, setLoading] = useState(false);
 
   const [questions, setQuestions] = useState<QuestionnaireType | null>(null);
+  const [totalQuestions, setTotalQuestions] = useState(0);
 
-    // const [answers, setAnswers] = useState<any>({});
+  // const [answers, setAnswers] = useState<any>({});
 
   const fetchQuestions = async () => {
     setLoading(true);
@@ -29,10 +30,25 @@ const useFetchQuestionnaire = () => {
     }
   };
 
+  useEffect(() => {
+    setTotalQuestions(countTotalQuestions());
+  }, [questions]);
+
+  const countTotalQuestions = (): number => {
+    if (!questions) return 0;
+
+    const final = questions.sections.reduce((total, section) => {
+      return total + section.questions.length;
+    }, 0);
+
+    return final;
+  };
+
   return {
     loading,
     questions,
     fetchQuestions,
+    totalQuestions,
   };
 };
 

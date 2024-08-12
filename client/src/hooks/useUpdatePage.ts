@@ -10,6 +10,7 @@ const useUpdatePage = (data: QuestionnaireType | null) => {
       currentQuestion: null,
       handleNext: () => {},
       handlePrevious: () => {},
+      currentCount: 0,
     };
   }
 
@@ -19,6 +20,8 @@ const useUpdatePage = (data: QuestionnaireType | null) => {
   const currentSection = data.sections[currentSectionIndex];
   const currentQuestion = currentSection.questions[currentQuestionIndex];
 
+  const [currentCount, setCurrentCount] = useState(0);
+
   const handleNext = () => {
     if (currentQuestionIndex < currentSection.questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -26,6 +29,9 @@ const useUpdatePage = (data: QuestionnaireType | null) => {
       setCurrentSectionIndex(currentSectionIndex + 1);
       setCurrentQuestionIndex(0);
     }
+
+    setCurrentCount(currentCount + 1);
+
   };
 
   const handlePrevious = () => {
@@ -35,6 +41,8 @@ const useUpdatePage = (data: QuestionnaireType | null) => {
       setCurrentSectionIndex(currentSectionIndex - 1);
       setCurrentQuestionIndex(data.sections[currentSectionIndex - 1].questions.length - 1);
     }
+
+    setCurrentCount(currentCount - 1);
   };
 
   return {
@@ -44,6 +52,7 @@ const useUpdatePage = (data: QuestionnaireType | null) => {
     currentQuestion,
     handleNext,
     handlePrevious,
+    currentCount
   };
 };
 
