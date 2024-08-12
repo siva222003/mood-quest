@@ -1,6 +1,5 @@
 import { updateAnswers, updateLocalStorage } from "@/helpers";
 import { AnswerType, QuestionType } from "@/types";
-import { IconVectorTriangle } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 interface RadioOptionsProps {
