@@ -4,9 +4,11 @@ import { IQuestionnaire, QuestionnaireSchema } from "../models/questionnaire.mod
 import { ISection, SectionSchema } from "../models/section.model";
 import { IQuestion, QuestionSchema } from "../models/question.model";
 import { RecommendationSchema, IRecommendations } from "../models/recommendations.model";
+import { IUser, userSchema } from "../models/user.model";
 
 export class DbService {
   private readonly _db: mongoose.Connection;
+  public readonly userModel: Model<IUser>;
   public readonly questionnaireModel: Model<IQuestionnaire>;
   public readonly sectionModel: Model<ISection>;
   public readonly questionModel: Model<IQuestion>;
@@ -15,6 +17,7 @@ export class DbService {
   constructor() {
     this._db = mongoose.connection;
 
+    this.userModel = this._db.model<IUser>("User", userSchema);
     this.questionnaireModel = this._db.model<IQuestionnaire>("Questionnaire", QuestionnaireSchema);
     this.sectionModel = this._db.model<ISection>("Section", SectionSchema);
     this.questionModel = this._db.model<IQuestion>("Question", QuestionSchema);

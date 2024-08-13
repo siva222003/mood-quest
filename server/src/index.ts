@@ -11,6 +11,7 @@ import sectionRouter from "./routes/section.routes";
 import questionRoutes from "./routes/question.routes";
 import recommendationRoutes from "./routes/recommendation.routes";
 import { ApiResponse } from "./utils/api-response";
+import userRoutes from "./routes/user.routes";
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(express.json());
 
 app.use(morgan("dev"));
 
+app.use("/api/user", userRoutes);
 app.use("/api/questionnaire", questionnaireRouter);
 app.use("/api/section", sectionRouter);
 app.use("/api/question", questionRoutes);
@@ -40,7 +42,6 @@ app.post("/api/ai", async (req, res) => {
     const moods = await analyzeMood(answers);
 
     res.json(new ApiResponse(200, "Moods analyzed successfully", moods));
-
   } catch (error) {
     res.status(500).send({ error: "An error occurred" });
     console.error("Error analyzing mood:", error);

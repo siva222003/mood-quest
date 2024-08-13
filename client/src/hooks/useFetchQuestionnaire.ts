@@ -31,6 +31,10 @@ const useFetchQuestionnaire = () => {
   };
 
   useEffect(() => {
+    fetchQuestions();
+  }, []);
+
+  useEffect(() => {
     setTotalQuestions(countTotalQuestions());
   }, [questions]);
 
@@ -47,7 +51,6 @@ const useFetchQuestionnaire = () => {
   return {
     loading,
     questions,
-    fetchQuestions,
     totalQuestions,
   };
 };

@@ -48,3 +48,8 @@ function isValidImageUrl(url: string): boolean {
   const imageUrlPattern = /\.(jpeg|jpg|gif|png)$/i;
   return imageUrlPattern.test(url);
 }
+
+export function isValidEmail(email: string): boolean {
+  const emailPattern = /\S+@\S+\.\S+/;
+  return emailPattern.test(email);
+}

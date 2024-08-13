@@ -13,4 +13,4 @@ router.get("/questionnaire/:questionnaireId", getQuestionsByQuestionnaireId);
 router.post("/", createQuestion);
 router.delete("/:id", deleteQuestion);
 
-export default router;
+export default router

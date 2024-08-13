@@ -76,9 +76,9 @@ const Home = () => {
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.5"
                     d="M4 6h16M4 12h16M4 18h16"
                   ></path>
                 </svg>

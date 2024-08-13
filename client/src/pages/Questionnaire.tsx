@@ -7,20 +7,14 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Questionnaire = () => {
-  const { loading, questions, fetchQuestions, totalQuestions } = useFetchQuestionnaire();
+  const { loading, questions, totalQuestions } = useFetchQuestionnaire();
 
   useEffect(() => {
-    fetchQuestions();
-
     localStorage.removeItem("selected");
   }, []);
 
   if (loading) {
     return <QuestionnaireLoader />;
-  }
-
-  if (!questions) {
-    return <div>Something went wrong </div>;
   }
 
   return (
@@ -39,7 +33,7 @@ const Questionnaire = () => {
             <h1 className="text-3xl font-bold">Mood Quest</h1>
           </Link>
 
-          <QuestionList data={questions} totalQuestions={totalQuestions} />
+          {questions && <QuestionList data={questions} totalQuestions={totalQuestions} />}
         </div>
       </section>
     </>

@@ -19,7 +19,7 @@ export const updateAnswers = (
   return updatedAnswers;
 };
 
-type Selected = number | number[]  | "true" | "false" | null;
+type Selected = number | number[] | "true" | "false" | null;
 
 export const updateLocalStorage = (question: QuestionType, selected: Selected) => {
   const prev = localStorage.getItem("selected");
