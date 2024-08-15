@@ -10,6 +10,7 @@ export interface IRecommendations extends Document {
   url: string;
   thumbnailUrl: string;
   tags: string[];
+  createdAt: Date;
   //   publishDate: Date; // Date when the content was published
   //   author: string; // Author of the content
   //   duration?: number; // Duration of the content in minutes (optional, for podcasts and videos)
@@ -28,6 +29,8 @@ export const RecommendationSchema: Schema<IRecommendations> = new Schema({
   url: { type: String, required: true },
   thumbnailUrl: { type: String },
   tags: [{ type: String }],
+  createdAt: { type: Date, default: Date.now },
+
   //   publishDate: { type: Date, required: true },
   //   author: { type: String, required: true },
   //   duration: { type: Number },
