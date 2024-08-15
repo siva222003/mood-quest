@@ -59,10 +59,16 @@ const QuestionList = ({ data, totalQuestions }: QuestionListProps) => {
     }
   };
 
-
   const isLastQuestion =
     currentSectionIndex === data.sections.length - 1 &&
     currentQuestionIndex === currentSection!.questions.length - 1;
+
+  const isNextSectionEmpty =
+  currentQuestionIndex === currentSection!.questions.length - 1 && currentSectionIndex < data.sections.length - 1 &&
+    data.sections[currentSectionIndex + 1].questions.length === 0;
+
+
+  console.log({ currentQuestionIndex, currentSectionIndex ,isLastQuestion, isNextSectionEmpty});
 
   if (isPending) {
     return <MultiStepLoader loading={isPending} />;
@@ -98,10 +104,14 @@ const QuestionList = ({ data, totalQuestions }: QuestionListProps) => {
           </Button>
 
           <Button
-            onClick={isLastQuestion ? () => handleSubmit() : handleNext}
+            onClick={isLastQuestion || isNextSectionEmpty ? () => handleSubmit() : handleNext}
             className="px-8 py-6 bg-[#3a7bf7]"
           >
-            {isLastQuestion ? (isSubmitting ? "Submitting..." : "Submit") : "Continue"}
+            {isLastQuestion || isNextSectionEmpty
+              ? isSubmitting
+                ? "Submitting..."
+                : "Submit"
+              : "Continue"}
           </Button>
         </div>
       </div>

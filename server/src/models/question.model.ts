@@ -17,6 +17,7 @@ export interface IQuestion extends Document {
   questionText: string;
   type: QuestionType;
   options?: IQuestionOption[];
+  createdAt: Date;
 }
 
 export const QuestionSchema: Schema<IQuestion> = new Schema({
@@ -32,4 +33,5 @@ export const QuestionSchema: Schema<IQuestion> = new Schema({
       imageUrl: { type: String },
     },
   ],
+  createdAt: { type: Date, default: Date.now },
 });

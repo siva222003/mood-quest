@@ -6,6 +6,7 @@ import {
   getSection,
   updateSection,
   getAllSections,
+  getSectionsByQuestionnaireId,
 } from "../controllers/section.controller";
 
 const router = express.Router();
@@ -13,6 +14,8 @@ const router = express.Router();
 router.get("/", getAllSections);
 
 router.get("/:id", getSection);
+
+router.get("/questionnaire/:questionnaireId", getSectionsByQuestionnaireId);
 
 router.post("/:questionnaireId", createSection);
 

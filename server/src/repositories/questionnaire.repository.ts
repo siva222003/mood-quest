@@ -20,6 +20,10 @@ export class QuestionnaireRepository {
     });
   }
 
+  async getSectionsByQuestionnaireId(id: string) {
+    return this._db.questionnaireModel.findById(id).populate("sections");
+  }
+
   async create(data: { title: string }) {
     return this._db.questionnaireModel.create(data);
   }

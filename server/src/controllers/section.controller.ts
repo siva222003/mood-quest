@@ -1,4 +1,4 @@
-import { sectionService } from "../config/injection";
+import { questionnaireService, sectionService } from "../config/injection";
 import { STATUS_CODES } from "../helpers/constants";
 import { ApiError } from "../utils/api-error";
 import { ApiResponse } from "../utils/api-response";
@@ -6,6 +6,11 @@ import { asyncHandler } from "../utils/async-handler";
 
 export const getAllSections = asyncHandler(async (req, res) => {
   const sections = await sectionService.getAll();
+
+  // for (let user of sections) {
+  //   user.createdAt = user._id.getTimestamp();
+  //   await user.save();
+  // }
 
   res.json(new ApiResponse(STATUS_CODES.OK, "Successfully retrieved sections", sections));
 });
@@ -18,6 +23,18 @@ export const getSection = asyncHandler(async (req, res) => {
   const section = await sectionService.getById(req.params.id);
 
   res.json(new ApiResponse(STATUS_CODES.OK, "Successfully retrieved section", section));
+});
+
+export const getSectionsByQuestionnaireId = asyncHandler(async (req, res) => {
+  if (!req.params.questionnaireId) {
+    throw ApiError.badRequest("Questionnaire ID is required");  
+  }
+
+  const sections = await questionnaireService.getSectionsByQuestionnaireId(
+    req.params.questionnaireId
+  );
+
+  res.json(new ApiResponse(STATUS_CODES.OK, "Successfully retrieved sections", sections));
 });
 
 export const createSection = asyncHandler(async (req, res) => {

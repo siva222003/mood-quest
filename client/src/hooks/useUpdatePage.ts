@@ -25,7 +25,7 @@ const useUpdatePage = (data: QuestionnaireType | null) => {
   const handleNext = () => {
     if (currentQuestionIndex < currentSection.questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-    } else if (currentSectionIndex < data.sections.length - 1) {
+    } else if (currentSectionIndex < data.sections.length - 1 && data.sections[currentSectionIndex + 1].questions.length > 0) {
       setCurrentSectionIndex(currentSectionIndex + 1);
       setCurrentQuestionIndex(0);
     }

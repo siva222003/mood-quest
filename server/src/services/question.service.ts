@@ -27,6 +27,16 @@ export class QuestionService {
     return question;
   }
 
+  async update(id: string, data: IQuestion) {
+    const question = await this._questionRepo.update(id, data);
+
+    if (!question) {
+      throw ApiError.notFound("Question not found");
+    }
+
+    return question;
+  }
+
   async delete(id: string, sectionId: string) {
     const question = await this._questionRepo.delete(id);
 
@@ -45,6 +55,5 @@ export class QuestionService {
     await section.save();
 
     return question;
-    
   }
 }

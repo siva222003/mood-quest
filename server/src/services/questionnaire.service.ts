@@ -28,6 +28,15 @@ export class QuestionnaireService {
     return questionnaire;
   }
 
+  async getSectionsByQuestionnaireId(id: string) {
+    const questionnaire = await this._questionnaireRepo.getSectionsByQuestionnaireId(id);
+
+    if (!questionnaire) {
+      throw ApiError.notFound("Questionnaire not found");
+    }
+
+    return questionnaire;
+  }
 
   async create(data: { title: string }) {
     return this._questionnaireRepo.create(data);

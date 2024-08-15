@@ -12,6 +12,10 @@ export class QuestionRepository {
     return this._db.questionModel.findById(id);
   }
 
+  async update(id: string, data: IQuestion) {
+    return this._db.questionModel.findByIdAndUpdate(id, data);
+  }
+
   async delete(id: string) {
     return this._db.questionModel.findByIdAndDelete(id);
   }

@@ -54,6 +54,20 @@ export const createQuestion = asyncHandler(async (req, res) => {
   res.send(new ApiResponse(STATUS_CODES.CREATED, "Successfully created question", question));
 });
 
+export const updateQuestion = asyncHandler(async (req, res) => {
+  if (!req.params.id) {
+    throw ApiError.badRequest("Question id is required");
+  }
+
+  if (!req.body.question) {
+    throw ApiError.badRequest("Question is required");
+  }
+
+  const question = await questionService.update(req.params.id, req.body.question);
+
+  res.send(new ApiResponse(STATUS_CODES.OK, "Successfully updated question", question));
+});
+
 export const deleteQuestion = asyncHandler(async (req, res) => {
   if (!req.params.id) {
     throw ApiError.badRequest("Question id is required");

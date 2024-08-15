@@ -40,9 +40,9 @@ export const createUser = asyncHandler(async (req, res) => {
 });
 
 export const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, role = "user" } = req.body;
 
-  const user = await userService.loginUser(email, password);
+  const user = await userService.loginUser(email, password,role);
 
   const token = genToken(user.id);
 

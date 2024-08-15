@@ -17,6 +17,8 @@ const Questionnaire = () => {
     return <QuestionnaireLoader />;
   }
 
+  console.log(questions)
+
   return (
     <>
       <section className="flex flex-col min-h-screen h-screen">

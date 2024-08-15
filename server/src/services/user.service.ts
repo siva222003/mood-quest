@@ -7,10 +7,14 @@ export class UserService {
   constructor(private readonly _userRepo: UserRepository) {}
 
   async createUser(user: IUser) {
-    const { email, password } = user;
+    const { name, email, password } = user;
 
     if (!email || !password) {
       throw ApiError.badRequest("Email and password are required");
+    }
+
+    if (!name) {
+      throw ApiError.badRequest("Name is required");
     }
 
     if (!isValidEmail(email)) {
@@ -27,7 +31,7 @@ export class UserService {
     return newUser;
   }
 
-  async loginUser(email: string, password: string) {
+  async loginUser(email: string, password: string, role: "user" | "admin") {
     if (!email || !password) {
       throw ApiError.badRequest("Email and password are required");
     }
@@ -44,6 +48,10 @@ export class UserService {
 
     if (!user.correctPassword(user.password, password)) {
       throw ApiError.unauthorized("Password is incorrect");
+    }
+
+    if (user.role !== role) {
+      throw ApiError.unauthorized("You are not an admin");
     }
 
     return user;

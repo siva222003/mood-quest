@@ -7,6 +7,11 @@ import { asyncHandler } from "../utils/async-handler";
 export const getAllQuestionnaires = asyncHandler(async (req, res) => {
   const questionnaires = await questionnaireService.getAll();
 
+  // for (let user of questionnaires) {
+  //   user.createdAt = user._id.getTimestamp();
+  //   await user.save();
+  // }
+
   if (!questionnaires) {
     throw ApiError.badRequest("No questionnaires found");
   }
