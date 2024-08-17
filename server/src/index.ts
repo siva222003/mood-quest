@@ -55,12 +55,12 @@ app.post("/api/ai", async (req, res) => {
 let task: any;
 app.post("/api/mail/start", (req, res) => {
   try {
-    const { name, date } = req.body;
+    const { name, date, email } = req.body;
 
     if (!task) {
       task = cron.schedule(date, () => {
         sendMail({
-          to: "sivapidugu02@gmail.com",
+          to: email,
           html: html(name),
         });
         console.log("Email sent!");
@@ -79,7 +79,7 @@ app.post("/api/mail/stop", (req, res) => {
   try {
     if (task) {
       task.stop();
-      task = null; 
+      task = null;
       res.json(new ApiResponse(200, "Cron job stopped", {}));
     } else {
       res.status(400).json(new ApiResponse(400, "No running cron job to stop", {}));

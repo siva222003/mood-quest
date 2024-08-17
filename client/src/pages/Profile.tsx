@@ -35,6 +35,7 @@ const Profile = () => {
       const res = await api.post("/mail/start", {
         name: user?.name,
         date: getCronExpression(newDate),
+        email : user?.email
       });
       toast({
         title: "Reminder started",
