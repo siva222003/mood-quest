@@ -8,6 +8,7 @@ import Recommendations from "@/components/recommendations/Recommendations";
 import { api } from "@/axios";
 import { RecommendationType } from "@/types";
 import RecommendationsLoader from "@/components/loaders/RecommendationsLoader";
+import { useAuth } from "@/context/AuthContext";
 
 export default function SidebarDemo() {
   const links = [
@@ -46,8 +47,15 @@ export default function SidebarDemo() {
   const navigate = useNavigate();
   const { moods } = location.state || [];
 
+  const { user } = useAuth();
+
   useEffect(() => {
     if (!moods || moods.length === 0) {
+      if (!user) {
+        navigate("/");
+        return;
+      }
+
       navigate("/questionnaire");
     }
 

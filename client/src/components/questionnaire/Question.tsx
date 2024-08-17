@@ -15,14 +15,24 @@ const Question = ({ question, setAnswers, currentCount }: QuestionProps) => {
   const element = (question: QuestionType) => {
     switch (question.type) {
       case QuestionEnum.BOOLEAN:
-        return <Boolean question={question} setAnswers={setAnswers} currentCount={currentCount+1} />;
+        return (
+          <Boolean question={question} setAnswers={setAnswers} currentCount={currentCount + 1} />
+        );
       case QuestionEnum.SCALE:
-        return <Scale question={question} setAnswers={setAnswers} currentCount={currentCount+1} />;
+        return (
+          <Scale question={question} setAnswers={setAnswers} currentCount={currentCount + 1} />
+        );
       case QuestionEnum.CHIPS:
-        return <Chips question={question} setAnswers={setAnswers} currentCount={currentCount+1} />;
+        return (
+          <Chips question={question} setAnswers={setAnswers} currentCount={currentCount + 1} />
+        );
       case QuestionEnum.MULTIPLE_CHOICE:
         return (
-          <RadioOptions question={question} setAnswers={setAnswers} currentCount={currentCount+1} />
+          <RadioOptions
+            question={question}
+            setAnswers={setAnswers}
+            currentCount={currentCount + 1}
+          />
         );
       case QuestionEnum.MULTIPLE_CHOICE_IMG:
         return <ImageOptions />;

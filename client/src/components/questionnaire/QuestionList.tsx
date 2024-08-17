@@ -8,6 +8,7 @@ import { api } from "@/axios";
 import { useNavigate } from "react-router-dom";
 import MultiStepLoader from "../loaders/MultiStep";
 import { Progress } from "../ui/progress";
+import nodata from "@/assets/images/image.png";
 
 interface QuestionListProps {
   data: QuestionnaireType;
@@ -15,6 +16,25 @@ interface QuestionListProps {
 }
 
 const QuestionList = ({ data, totalQuestions }: QuestionListProps) => {
+  if (
+    !data.sections ||
+    data.sections.length === 0 ||
+    !data.sections[0].questions ||
+    data.sections[0].questions.length === 0
+  ) {
+    return (
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="flex-1 flex flex-col justify-center items-center gap-4"
+      >
+        <img src={nodata} alt="No Data" className="w-20 h-20" />
+        <h1 className="text-2xl">No Questions</h1>
+      </motion.div>
+    );
+  }
+
   const {
     currentQuestion,
     currentQuestionIndex,
@@ -44,7 +64,6 @@ const QuestionList = ({ data, totalQuestions }: QuestionListProps) => {
         try {
           setIsPending(true);
           const response = await api.post("/ai", { answers });
-          console.log("Submission successful:", response.data.data);
           navigate("/recommendations", { state: { moods: response.data.data } });
         } catch (error) {
           console.error("Submission failed:", error);
@@ -64,11 +83,9 @@ const QuestionList = ({ data, totalQuestions }: QuestionListProps) => {
     currentQuestionIndex === currentSection!.questions.length - 1;
 
   const isNextSectionEmpty =
-  currentQuestionIndex === currentSection!.questions.length - 1 && currentSectionIndex < data.sections.length - 1 &&
+    currentQuestionIndex === currentSection!.questions.length - 1 &&
+    currentSectionIndex < data.sections.length - 1 &&
     data.sections[currentSectionIndex + 1].questions.length === 0;
-
-
-  console.log({ currentQuestionIndex, currentSectionIndex ,isLastQuestion, isNextSectionEmpty});
 
   if (isPending) {
     return <MultiStepLoader loading={isPending} />;

@@ -2,13 +2,13 @@ import { Document, model, Schema } from "mongoose";
 import bcrypt from "bcryptjs";
 
 export interface IUser extends Document {
-  name?: string;
+  name: string;
   age?: number;
   gender?: string;
   role: string;
   email: string;
   password: string;
-  createdAt: () => number | string; 
+  createdAt: () => number | string;
   correctPassword: (password: string, enteredPassword: string) => Promise<boolean>;
 }
 

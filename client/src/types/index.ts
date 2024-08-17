@@ -49,3 +49,27 @@ export interface RecommendationType {
   thumbnailUrl: string;
   tags: string[];
 }
+
+export interface User {
+  _id: string;
+  email: string;
+  name: string;
+  gender: string;
+  age: number;
+  createdAt: string;
+}
+
+export interface Questionnaires {
+  _id: string;
+  title: string;
+  sections: string[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface QuestionnairesResponse {
+  status: number;
+  message: string;
+  data: Questionnaires[];
+  success: boolean;
+}

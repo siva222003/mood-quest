@@ -2,20 +2,16 @@ import { api } from "@/axios";
 import { QuestionnaireResponse, QuestionnaireType } from "@/types/index";
 import { useEffect, useState } from "react";
 
-const useFetchQuestionnaire = () => {
+const useFetchQuestionnaire = (id: string) => {
   const [loading, setLoading] = useState(false);
 
   const [questions, setQuestions] = useState<QuestionnaireType | null>(null);
   const [totalQuestions, setTotalQuestions] = useState(0);
 
-  // const [answers, setAnswers] = useState<any>({});
-
   const fetchQuestions = async () => {
     setLoading(true);
     try {
-      const response = await api.get<QuestionnaireResponse | null>(
-        "question/questionnaire/66b6d29c3025c3f9a687f020"
-      );
+      const response = await api.get<QuestionnaireResponse | null>(`question/questionnaire/${id}`);
 
       if (!response.data) {
         throw new Error("No data found");

@@ -2,12 +2,16 @@ import Features from "@/components/home/Features";
 import Footer from "@/components/home/Footer";
 import Steps from "@/components/home/Steps";
 import HomeLoader from "@/components/loaders/HomeLoader";
+import { useAuth } from "@/context/AuthContext";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [imgLoaded, setImgLoaded] = useState(false);
+
+  const { setLogin, setRegister, user } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadImage = () => {
@@ -25,6 +29,14 @@ const Home = () => {
     const element = document.getElementById(elementId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleRoute = (route: string) => {
+    if (!user) {
+      setLogin(true);
+    } else {
+      navigate(route);
     }
   };
 
@@ -47,21 +59,10 @@ const Home = () => {
         className="py-4 max-md:shadow-md md:py-6"
       >
         <div className="container px-4 mx-auto sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* <div className="flex-shrink-0">
-              <a
-                href="#"
-                title=""
-                className="flex rounded outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
-              >
-                <img
-                  className="w-auto h-8"
-                  src={logo}
-                  alt=""
-                />
-              </a>
-            </div> */}
+          {/* {login && <LoginModal />}
+          {register && <RegisterModal />} */}
 
+          <div className="flex items-center justify-between">
             <h1 className="text-3xl font-bold">Mood Quest</h1>
 
             {/* <Logo /> */}
@@ -125,25 +126,33 @@ const Home = () => {
 
             {/* Auth */}
 
-            <div className="hidden lg:ml-auto lg:flex lg:items-center lg:space-x-8 xl:space-x-10">
-              <a
-                href="#"
-                title=""
-                className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
-              >
-                {" "}
-                Sign in{" "}
-              </a>
-
-              <a
-                href="#"
-                title=""
+            {user ? (
+              <Link
+                to={`/profile`}
                 className="px-5 py-2 text-base font-bold leading-7 text-white transition-all duration-200 bg-gray-900 border border-transparent rounded-xl hover:bg-gray-600 font-pj focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                 role="button"
               >
-                Create free account
-              </a>
-            </div>
+                {user.name}
+              </Link>
+            ) : (
+              <div className="hidden lg:ml-auto lg:flex lg:items-center lg:space-x-8 xl:space-x-10">
+                <button
+                  onClick={() => setLogin(true)}
+                  className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
+                >
+                  {" "}
+                  Sign in{" "}
+                </button>
+
+                <button
+                  onClick={() => setRegister(true)}
+                  className="px-5 py-2 text-base font-bold leading-7 text-white transition-all duration-200 bg-gray-900 border border-transparent rounded-xl hover:bg-gray-600 font-pj focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                  role="button"
+                >
+                  Create account
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </motion.header>
@@ -177,12 +186,12 @@ const Home = () => {
                 </p>
 
                 <div className="mt-4 max-lg:justify-center sm:mt-8 sm:inset-y-0 sm:right-0 sm:flex sm:items-center sm:pr-2">
-                  <Link
-                    to="/questionnaire"
+                  <button
+                    onClick={() => handleRoute("/questionnaire")}
                     className="inline-flex px-6 py-3 text-lg font-bold text-white transition-all duration-200 bg-gray-900 rounded-lg focus:outline-none focus:bg-gray-600 font-pj hover:bg-gray-600"
                   >
                     Get Started
-                  </Link>
+                  </button>
                 </div>
               </div>
 

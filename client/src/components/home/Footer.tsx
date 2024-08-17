@@ -13,7 +13,7 @@ const Footer = () => {
 
             <p className="text-base leading-relaxed text-gray-600 mt-7">
               Explore personalized recommendations tailored to your mood. From insightful blogs to
-              engaging videos and podcasts, we help you find the content that resonates with you  !
+              engaging videos and podcasts, we help you find the content that resonates with you !
             </p>
 
             <ul className="flex items-center space-x-3 mt-9">
@@ -198,23 +198,21 @@ const Footer = () => {
               Subscribe to newsletter
             </p>
 
-            <div  className="mt-6">
+            <div className="mt-6">
               <div>
-                <label htmlFor="email" className="sr-only">
+                <label htmlFor="foo-email" className="sr-only">
                   Email
                 </label>
                 <input
                   type="email"
                   name="email"
-                  id="email"
+                  id="foo-email"
                   placeholder="Enter your email"
                   className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
                 />
               </div>
 
-              <button
-                className="inline-flex items-center justify-center px-6 py-4 mt-3 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-md hover:bg-blue-700 focus:bg-blue-700"
-              >
+              <button className="inline-flex items-center justify-center px-6 py-4 mt-3 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-md hover:bg-blue-700 focus:bg-blue-700">
                 Subscribe
               </button>
             </div>
