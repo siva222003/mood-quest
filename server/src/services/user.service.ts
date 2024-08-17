@@ -50,7 +50,7 @@ export class UserService {
       throw ApiError.unauthorized("Password is incorrect");
     }
 
-    if (user.role !== role) {
+    if (user.role === "user" && role === "admin") {
       throw ApiError.unauthorized("You are not an admin");
     }
 

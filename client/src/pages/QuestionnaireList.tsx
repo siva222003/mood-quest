@@ -29,7 +29,9 @@ const QuestionnaireList = () => {
               whileTap={{ scale: 0.93 }}
               className="px-4 py-3 shadow-md rounded-lg flex items-center my-4 cursor-pointer bg-white gap-4"
             >
-              <div className={`px-8 py-6 rounded-md bg-[${colors[index % 4]}]`}>{index + 1}</div>
+              <div className={`px-8 py-6 rounded-md`}
+              style={{ backgroundColor: colors[index % colors.length] }}
+              >{index + 1}</div>
               <h1 className="text-xl">{questionnaire.title}</h1>
             </motion.div>
           </Link>

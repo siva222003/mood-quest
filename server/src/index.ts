@@ -12,6 +12,10 @@ import questionRoutes from "./routes/question.routes";
 import recommendationRoutes from "./routes/recommendation.routes";
 import { ApiResponse } from "./utils/api-response";
 import userRoutes from "./routes/user.routes";
+import { sendMail } from "./utils/mailer";
+
+import cron from "node-cron";
+import { html } from "./data/mailer";
 
 const app = express();
 
@@ -45,6 +49,44 @@ app.post("/api/ai", async (req, res) => {
   } catch (error) {
     res.status(500).send({ error: "An error occurred" });
     console.error("Error analyzing mood:", error);
+  }
+});
+
+let task: any;
+app.post("/api/mail/start", (req, res) => {
+  try {
+    const { name, date } = req.body;
+
+    if (!task) {
+      task = cron.schedule(date, () => {
+        sendMail({
+          to: "sivapidugu02@gmail.com",
+          html: html(name),
+        });
+        console.log("Email sent!");
+      });
+      res.json(new ApiResponse(200, "Cron job started, email will be sent every 10 seconds", {}));
+    } else {
+      res.status(400).json(new ApiResponse(400, "Cron job is already running", {}));
+    }
+  } catch (error) {
+    res.status(500).send({ error: "An error occurred" });
+    console.error("Error starting cron job:", error);
+  }
+});
+
+app.post("/api/mail/stop", (req, res) => {
+  try {
+    if (task) {
+      task.stop();
+      task = null; 
+      res.json(new ApiResponse(200, "Cron job stopped", {}));
+    } else {
+      res.status(400).json(new ApiResponse(400, "No running cron job to stop", {}));
+    }
+  } catch (error) {
+    res.status(500).send({ error: "An error occurred" });
+    console.error("Error stopping cron job:", error);
   }
 });
 
